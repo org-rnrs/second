@@ -1,0 +1,17 @@
+name: Build workflow
+run-name: Build workflow
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+  pull_request:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+      - name : Run Tests 
+        run: |
+          echo "Hello
